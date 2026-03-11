@@ -1,0 +1,22 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Lead Magnet: Quiz Results
+    match /quiz_results/{resultId} {
+      allow create: if true;
+      allow update: if true;
+      allow read: if request.auth != null &&
+                     get(/databases/$(database)/documents/users/$(request.auth.uid)).data.isAdmin == true;
+      allow delete: if false;
+    }
+
+    // Lead Magnet: Leads
+    match /leads/{leadId} {
+      allow create: if true;
+      allow read: if request.auth != null &&
+                     get(/databases/$(database)/documents/users/$(request.auth.uid)).data.isAdmin == true;
+      allow update, delete: if false;
+    }
+  }
+}

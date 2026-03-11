@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KI-Spar-Rechner | 2b AHEAD</title>
+
+    <!-- OG Tags for Meta/Social Sharing -->
+    <meta property="og:title" content="KI-Spar-Rechner | 2b AHEAD" />
+    <meta property="og:description" content="Finde in 60 Sekunden heraus, wie viel Zeit & Geld KI DIR jede Woche sparen kann." />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="de_DE" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #FDFCFD;
+        color: #111827;
+      }
+      .bg-primary { background-color: #64162D; }
+      .text-primary { color: #64162D; }
+      .border-primary { border-color: #64162D; }
+
+      /* Custom Range Slider */
+      input[type=range] {
+        -webkit-appearance: none;
+        width: 100%;
+        background: transparent;
+      }
+      input[type=range]:focus { outline: none; }
+      input[type=range]::-webkit-slider-runnable-track {
+        width: 100%; height: 8px; cursor: pointer;
+        background: #F1E6E9; border-radius: 10px;
+      }
+      input[type=range]::-webkit-slider-thumb {
+        height: 28px; width: 28px; border-radius: 50%;
+        background: #64162D; cursor: pointer;
+        -webkit-appearance: none; margin-top: -10px;
+        box-shadow: 0 4px 10px rgba(100, 22, 45, 0.3);
+        border: 3px solid white;
+      }
+      input[type=range]::-moz-range-track {
+        width: 100%; height: 8px; cursor: pointer;
+        background: #F1E6E9; border-radius: 10px;
+      }
+      input[type=range]::-moz-range-thumb {
+        height: 28px; width: 28px; border-radius: 50%;
+        background: #64162D; cursor: pointer;
+        border: 3px solid white;
+        box-shadow: 0 4px 10px rgba(100, 22, 45, 0.3);
+      }
+
+      /* Blurred gate */
+      .blurred-gate {
+        filter: blur(8px);
+        pointer-events: none;
+        user-select: none;
+      }
+
+      /* Print styles */
+      @media print {
+        @page { margin: 2cm; size: A4; }
+        nav, .no-print, button, .gate-overlay { display: none !important; }
+        body { background: white !important; padding: 0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        .blurred-gate { filter: none !important; pointer-events: auto; user-select: auto; }
+        .card-print { box-shadow: none !important; border: 1px solid #e5e7eb !important; break-inside: avoid; margin-bottom: 20px; }
+        .recharts-responsive-container { width: 100% !important; height: 300px !important; }
+      }
+
+      /* Count-up animation helper */
+      @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-fade-in-up {
+        animation: fadeInUp 0.6s ease-out forwards;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "recharts": "https://esm.sh/recharts@^3.6.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "firebase/app": "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js",
+    "firebase/firestore": "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
